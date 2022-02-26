@@ -18,7 +18,8 @@ const ExpenseItem = (props) => {
 
   // it is recommended to use that naming convention => (if it is an event the function name ends with Handler keyword)
   const clickHandler = () => {
-    console.log("clickeddd!!");
+    title = props.title;
+    title = "updated!"; //that won't change because we didn't use the state concept
   };
 
   return (
