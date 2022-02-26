@@ -1,4 +1,5 @@
 //that is how you import a css file in your component
+import React, { useState } from "react";
 import Card from "../UI/Card";
 import ExpenseDate from "./ExpenseDate";
 import "./ExpenseItem.css";
@@ -16,10 +17,22 @@ const ExpenseItem = (props) => {
   //you injext a variable by using {}
   //toISOString method changes date to string
 
+  /**
+   * STATE:
+   *  you have to import => import React, { useState } from "react";
+   *  useState method ALWAYS returns an array with TWO values
+   *  first value is the changed variable
+   *  second value is the function that changes that value (the method which you call to change that value)
+   */
+
+  // destructive array
+  const [title, setTitle] = useState(props.title);
+
   // it is recommended to use that naming convention => (if it is an event the function name ends with Handler keyword)
   const clickHandler = () => {
-    title = props.title;
-    title = "updated!"; //that won't change because we didn't use the state concept
+    // title = props.title;
+    // title = "updated!"; //that won't change because we didn't use the state concept
+    setTitle("updatedddd!");
   };
 
   return (
@@ -28,7 +41,7 @@ const ExpenseItem = (props) => {
       {/*as long as the component does not have contents between tags it can be written like this*/}
       <ExpenseDate date={props.date} />
       <div className="expense-item__description">
-        <h2>{props.title}</h2>
+        <h2>{title}</h2>
         <div className="expense-item__price">{props.amount}</div>
       </div>
       {/* to add an event listener in react we have to use the word on first */}
