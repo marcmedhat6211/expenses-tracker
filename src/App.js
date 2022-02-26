@@ -1,7 +1,7 @@
-import Expenses from "./components/Expenses";
-import ExpenseItem from "./components/ExpenseItem";
+import React from "react"; //this import does not have to be there, but we're just putting it to always remember that it is used
+import Expenses from "./components/Expenses/Expenses";
 
-function App() {
+const App = () => {
   const expenses = [
     {
       id: "e1",
@@ -24,12 +24,20 @@ function App() {
     },
   ];
 
+  //That is how JSX is being converted under the hood
+  // return React.createElement(
+  //   "div",
+  //   {},
+  //   React.createElement("h2", {}, "Let's get started!"),
+  //   React.createElement(Expenses, { items: expenses })
+  // );
+
   return (
     <div>
       <h2>Let's get started!</h2>
       <Expenses items={expenses} />
     </div>
   );
-}
+};
 
 export default App;
