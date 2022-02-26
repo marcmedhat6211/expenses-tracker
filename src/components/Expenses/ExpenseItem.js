@@ -23,6 +23,10 @@ const ExpenseItem = (props) => {
    *  useState method ALWAYS returns an array with TWO values
    *  first value is the changed variable
    *  second value is the function that changes that value (the method which you call to change that value)
+   *
+   *  THE COMPONENT WHERE YOU REGISTER THE useState hook, gets recreated again by react (ONLY THAT COMPONENT)
+   *  State is called on each instance of that component ALONE and only one time on that component
+   *  We used a const to define title even though it is changed, because it doesn't really change, it is just that react gives us a new state for it
    */
 
   // destructive array
