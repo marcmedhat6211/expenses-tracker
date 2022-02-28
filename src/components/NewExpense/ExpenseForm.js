@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   //this is the same logic in one place
   // we do this by using state and passing object instead of empty string
   // but note that you have to pass all the values each time you set a new value to the object so that the object doesn't get replaced by the new one
@@ -59,10 +59,16 @@ const ExpenseForm = () => {
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
-    console.log(expensesData);
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
+
+    /**
+     * This is how you pass data from a child component to a parent component
+     * You'll deal with it as if it is props
+     * Here You "CALL" the function not Point at it
+     */
+    props.onSaveExpenseData(expensesData);
   };
 
   return (
