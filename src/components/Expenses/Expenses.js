@@ -10,6 +10,10 @@ const Expenses = (props) => {
     setEnteredYear(selectedYear);
   };
 
+  const filteredExpenses = props.items.filter((expense) => {
+    return expense.date.getFullYear().toString() === filteredYear;
+  });
+
   return (
     <div>
       <Card className="expenses">
@@ -25,7 +29,7 @@ const Expenses = (props) => {
             this can cause some problems if you are using a statefull component for example, because it can cause the lost of this state
             the key prop is important to prevent any errors while rendering the list, as it doesn't let react rerenders all the list again
         */}
-        {props.items.map((expense) => (
+        {filteredExpenses.map((expense) => (
           <ExpenseItem
             key={expense.id}
             title={expense.title}
