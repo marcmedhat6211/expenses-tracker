@@ -20,8 +20,14 @@ const Expenses = (props) => {
             the map function takes a function as a parameter and the function takes the array element as a parameter and it retruns a new array
          */}
 
+        {/*
+            react normally works by appending new item to a changed list. and then it rerenders all items of that array to get all the right items
+            this can cause some problems if you are using a statefull component for example, because it can cause the lost of this state
+            the key prop is important to prevent any errors while rendering the list, as it doesn't let react rerenders all the list again
+        */}
         {props.items.map((expense) => (
           <ExpenseItem
+            key={expense.id}
             title={expense.title}
             amount={expense.amount}
             date={expense.date}
