@@ -40,19 +40,21 @@ const ExpenseItem = (props) => {
   // };
 
   return (
-    <Card className="expense-item">
-      {/* <div>{props.date.toISOString()}</div> */}
-      {/*as long as the component does not have contents between tags it can be written like this*/}
-      <ExpenseDate date={props.date} />
-      <div className="expense-item__description">
-        <h2>{props.title}</h2>
-        <div className="expense-item__price">{props.amount}</div>
-      </div>
-      {/* to add an event listener in react we have to use the word on first */}
-      {/* when you call a function in an event listener you just 'point' at the function by writting its name WITHOUT parenthesis */}
-      {/* that happens because if we wrote parenthesis the function will be excecuted when the JSX code is being parsed and that is too late */}
-      {/* <button onClick={clickHandler}>Change Title</button> */}
-    </Card>
+    <li>
+      <Card className="expense-item">
+        {/* <div>{props.date.toISOString()}</div> */}
+        {/*as long as the component does not have contents between tags it can be written like this*/}
+        <ExpenseDate date={props.date} />
+        <div className="expense-item__description">
+          <h2>{props.title}</h2>
+          <div className="expense-item__price">{props.amount}</div>
+        </div>
+        {/* to add an event listener in react we have to use the word on first */}
+        {/* when you call a function in an event listener you just 'point' at the function by writting its name WITHOUT parenthesis */}
+        {/* that happens because if we wrote parenthesis the function will be excecuted when the JSX code is being parsed and that is too late */}
+        {/* <button onClick={clickHandler}>Change Title</button> */}
+      </Card>
+    </li>
   );
 };
 

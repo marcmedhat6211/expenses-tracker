@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Card from "../UI/Card";
-import ExpenseItem from "./ExpenseItem";
 import ExpensesFilter from "./ExpensesFilter";
 import "./Expenses.css";
+import ExpensesList from "./ExpensesList";
 
 const Expenses = (props) => {
   const [filteredYear, setEnteredYear] = useState("2020");
@@ -14,18 +14,18 @@ const Expenses = (props) => {
     return expense.date.getFullYear().toString() === filteredYear;
   });
 
-  let expensesContent = <p>No results found</p>;
+  // let expensesContent = <p>No results found</p>;
 
-  if (filteredExpenses.length > 0) {
-    expensesContent = filteredExpenses.map((expense) => (
-      <ExpenseItem
-        key={expense.id}
-        title={expense.title}
-        amount={expense.amount}
-        date={expense.date}
-      />
-    ));
-  }
+  // if (filteredExpenses.length > 0) {
+  //   expensesContent = filteredExpenses.map((expense) => (
+  //     <ExpenseItem
+  //       key={expense.id}
+  //       title={expense.title}
+  //       amount={expense.amount}
+  //       date={expense.date}
+  //     />
+  //   ));
+  // }
 
   return (
     <div>
@@ -77,7 +77,13 @@ const Expenses = (props) => {
             Another way of making a conditional content 
             You can simply move the logic to make it up there where all the logic is
         */}
-        {expensesContent}
+        {/* {expensesContent} */}
+
+        {/* 
+            Another way of making a conditional content 
+            The best way of doing this is by making it a new component
+        */}
+        <ExpensesList items={filteredExpenses} />
 
         {/* <ExpenseItem
           title={props.items[0].title}
