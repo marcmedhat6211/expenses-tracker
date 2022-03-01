@@ -14,6 +14,19 @@ const Expenses = (props) => {
     return expense.date.getFullYear().toString() === filteredYear;
   });
 
+  let expensesContent = <p>No results found</p>;
+
+  if (filteredExpenses.length > 0) {
+    expensesContent = filteredExpenses.map((expense) => (
+      <ExpenseItem
+        key={expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+      />
+    ));
+  }
+
   return (
     <div>
       <Card className="expenses">
@@ -29,14 +42,43 @@ const Expenses = (props) => {
             this can cause some problems if you are using a statefull component for example, because it can cause the lost of this state
             the key prop is important to prevent any errors while rendering the list, as it doesn't let react rerenders all the list again
         */}
-        {filteredExpenses.map((expense) => (
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ))}
+
+        {/* This is one way of making a conditional content simply by using a ternary operator */}
+        {/* {filteredExpenses.length === 0 ? (
+          <p>No results found</p>
+        ) : (
+          filteredExpenses.map((expense) => (
+            <ExpenseItem
+              key={expense.id}
+              title={expense.title}
+              amount={expense.amount}
+              date={expense.date}
+            />
+          ))
+        )} */}
+
+        {/* 
+            Another way of making a conditional content 
+            this way is a bit strange but you'll find it in many react projects
+            you just write an expression with an && in between and js will simply return the second condition if the first one is met
+        */}
+        {/* {filteredExpenses.length === 0 && <p>No results found</p>}
+        {filteredExpenses.length > 0 &&
+          filteredExpenses.map((expense) => (
+            <ExpenseItem
+              key={expense.id}
+              title={expense.title}
+              amount={expense.amount}
+              date={expense.date}
+            />
+          ))} */}
+
+        {/* 
+            Another way of making a conditional content 
+            You can simply move the logic to make it up there where all the logic is
+        */}
+        {expensesContent}
+
         {/* <ExpenseItem
           title={props.items[0].title}
           amount={props.items[0].amount}
