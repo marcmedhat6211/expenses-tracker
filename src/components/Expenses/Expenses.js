@@ -14,7 +14,20 @@ const Expenses = (props) => {
     <div>
       <Card className="expenses">
         <ExpensesFilter selected={filteredYear} onFilter={onFilterHandler} />
-        <ExpenseItem
+        {/*
+            This is a way to output the array dynamically
+            using the map function
+            the map function takes a function as a parameter and the function takes the array element as a parameter and it retruns a new array
+         */}
+
+        {props.items.map((expense) => (
+          <ExpenseItem
+            title={expense.title}
+            amount={expense.amount}
+            date={expense.date}
+          />
+        ))}
+        {/* <ExpenseItem
           title={props.items[0].title}
           amount={props.items[0].amount}
           date={props.items[0].date}
@@ -33,7 +46,7 @@ const Expenses = (props) => {
           title={props.items[3].title}
           amount={props.items[3].amount}
           date={props.items[3].date}
-        />
+        /> */}
       </Card>
     </div>
   );
